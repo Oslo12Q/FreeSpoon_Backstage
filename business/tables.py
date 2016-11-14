@@ -17,7 +17,7 @@ from table.columns.checkboxcolumn import CheckboxColumn
 
 from table import Table
 from .models import *
-
+from table.utils import A
 
 class AjaxSourceTable(Table):
 
@@ -25,8 +25,8 @@ class AjaxSourceTable(Table):
     title = Column(field = 'title')
     reseller_mob = Column(field = 'reseller_mob')
     receive_mode = Column(field = 'receive_mode')
-    start_time = Column(field = 'start_time')
-    dead_time = Column(field = 'dead_time')
+    start_time = Column(field = 'start_time',searchable= False)
+    dead_time = Column(field = 'dead_time',searchable = False)
     status = Column(field = 'status')
     volume = Column(field = 'volume')
     details = Column(field = 'details')
@@ -35,3 +35,28 @@ class AjaxSourceTable(Table):
         ajax = True
         ajax_source = reverse_lazy('ajax_source_api')
 
+
+
+
+class OrderTable(Table):
+    
+    id = Column(field = 'id')
+    mob = Column(field = 'mob')
+    user_id = Column(field = 'user_id')
+    receive_name = Column(field = 'receive_name')
+    receive_mode = Column(field = 'receive_mode')
+    payment_price = Column(field = 'payment_price')
+    status = Column(field = 'status')
+    payment_method = Column(field = 'payment_method')
+    payment_id = Column(field = 'payment_id')
+    payment_time = Column(field = 'payment_time',searchable= False)
+    create_time =Column(field = 'create_time',searchable= False)
+    detailed = Column(field = 'detailed')
+    receive_address = Column(field = 'receive_address')
+    comments = Column(field = 'comments')
+    logistics = Column(field = 'logistics')
+    
+    class Meta:
+	model = Order
+	ajax = True
+	ajax_source = reverse_lazy('ajax_order_api')

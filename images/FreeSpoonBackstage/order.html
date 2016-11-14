@@ -10,26 +10,19 @@
 	<!-- END META -->
 
 	<!-- BEGIN SHORTCUT ICON -->
-	<link rel="shortcut icon" href="img/favicon.ico">
-	<!-- END SHORTCUT ICON -->
-	<title>FreeSpoon后台管理</title>
-	<!-- BEGIN STYLESHEET -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<!-- BOOTSTRAP CSS -->
-	<link href="css/bootstrap-reset.css" rel="stylesheet">
-	<!-- BOOTSTRAP CSS -->
-	<link href="moudle/font-awesome/css/font-awesome.css" rel="stylesheet">
-	<!-- FONT AWESOME ICON STYLESHEET -->
-	<link href="moudle/advanced-datatable/media/css/demo_page.css" rel="stylesheet">
-	<!-- ADVANCED DATATABLE CSS -->
-	<link href="moudle/advanced-datatable/media/css/demo_table.css" rel="stylesheet">
-	<!-- ADVANCED DATATABLE CSS -->
-	<link rel="stylesheet" href="moudle/data-tables/DT_bootstrap.css">
-	<!-- DATATABLE CSS -->
-	<link href="css/style.css" rel="stylesheet">
-	<!-- THEME BASIC CSS -->
-	<link href="css/style-responsive.css" rel="stylesheet">
-	<!-- THEME BASIC RESPONSIVE  CSS -->
+	<link rel="shortcut icon" href="img/favicon.ico"><!-- END SHORTCUT ICON -->
+	<title>FreeSpoon后台管理</title><!-- BEGIN STYLESHEET -->
+	<link href="css/bootstrap.min.css" rel="stylesheet"><!-- BOOTSTRAP CSS -->
+	<link href="css/bootstrap-reset.css" rel="stylesheet"><!-- BOOTSTRAP CSS -->
+	<link href="moudle/font-awesome/css/font-awesome.css" rel="stylesheet"><!-- FONT AWESOME ICON STYLESHEET -->
+	<link href="moudle/advanced-datatable/media/css/demo_page.css" rel="stylesheet"><!-- ADVANCED DATATABLE CSS -->
+	<link href="moudle/advanced-datatable/media/css/demo_table.css" rel="stylesheet"><!-- ADVANCED DATATABLE CSS -->
+	<link rel="stylesheet" href="moudle/data-tables/DT_bootstrap.css"><!-- DATATABLE CSS -->
+	<link href="css/style.css" rel="stylesheet"><!-- THEME BASIC CSS -->
+	<link href="css/style-responsive.css" rel="stylesheet"><!-- THEME BASIC RESPONSIVE  CSS -->
+	
+	<link href="moudle/buttons/css/buttons.dataTables.min.css" rel="stylesheet">
+	<link href="moudle/buttons/css/jquery.dataTables.min.css" rel="stylesheet">
 	<!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
@@ -115,18 +108,18 @@
                            </span>
 							</header>
 							<div class="panel-body">
-								<form class="form-inline" role="form">
+								<form id='form_table' class="form-inline" role="form">
 									<div class="form-group col-lg-3">
 										<div class="form-group">
-											<input type="text" class="form-control" id="exampleInputEmail2" placeholder="团购名称">
+											<input type="text" class="form-control" id="name" placeholder="团购名称">
 										</div>
 										<div class="form-group">
-											<input type="text" class="form-control" id="exampleInputPassword2" placeholder="团主手机号">
+											<input type="text" class="form-control" id="mob" placeholder="团主手机号">
 										</div>
 									</div>
 									<div class="form-group col-lg-3">
 										<span class="label label-warning">订单状态</span>
-										<select class="input-small inline form-control" style="width:90px">
+										<select id='pay_status' class="input-small inline form-control" style="width:90px">
 											<option value="0">未付款</option>
 											<option value="1">已付款</option>
 											<option value="2">已发货</option>
@@ -135,7 +128,7 @@
 											<option value="5">已过期</option>
 										</select>
 										<span class="label label-warning">付款方式</span>
-										<select class="input-small inline form-control" style="width:120px">
+										<select id='pay_method' class="input-small inline form-control" style="width:120px">
 											<option value="0">微信支付</option>
 											<option value="1">余额支付</option>
 											<option value="2">微信+余额</option>
@@ -146,17 +139,17 @@
 										<div class="form-group">
 											<div class="col-md-12">
 												<div class="input-group input-large" data-date="" data-date-format="yyyy/mm/dd">
-												<input type="text" class="form-control dpd1" name="from">
+												<input id='start_day' type="text" class="form-control dpd1" name="from">
 												<span class="input-group-addon">To</span>
-												<input type="text" class="form-control dpd2" name="to">
+												<input id='end_day' type="text" class="form-control dpd2" name="to">
 												</div>   
 											</div>
 										</div>
 										<!--date range end-->
 									</div>
 									<div class="form-group col-lg-3">
-										<button type="submit" class="btn btn-success">查询</button>
-										<button type="submit" class="btn btn-success">导出报表</button>
+										<button id='query' type="button" class="btn btn-success">查询</button>
+										<button id='clear' type="reset" class="btn btn-success">清空</button>
 									</div>
 								</form>
 							</div>
@@ -189,388 +182,6 @@
 												<th class="hidden-phone">物流单号</th>
 											</tr>
 										</thead>
-										<tbody>
-											<tr class="gradeX">
-												<td>1010001</td>
-												<td class="hidden-phone">
-													13212344301
-												</td>
-												<td>01</td>
-												<td class="center hidden-phone">杨洋</td>
-												<td class="center hidden-phone">送货上门</td>
-												<td class="center hidden-phone">100.00</td>
-												<td class="center hidden-phone">未付款</td>
-												<td class="center hidden-phone">微信支付</td>
-												<td class="center hidden-phone">121313133313</td>
-												<td class="center hidden-phone">2016-09-20 12:23:00</td>
-												<td class="center hidden-phone">2016-09-20 12:24:00</td>
-												<td class="center hidden-phone">葡萄*1</td>
-												<td class="center hidden-phone">北京市海淀区上地七街汇众大厦2号楼713室</td>
-												<td class="center hidden-phone">18点以后送到</td>
-												<td class="center hidden-phone"></td>
-											</tr>
-											<tr class="gradeX">
-												<td>1010002</td>
-												<td class="hidden-phone">
-													13212344302
-												</td>
-												<td>02</td>
-												<td class="center hidden-phone">送悟空</td>
-												<td class="center hidden-phone">送货上门</td>
-												<td class="center hidden-phone">100.00</td>
-												<td class="center hidden-phone">已取消</td>
-												<td class="center hidden-phone">余额支付</td>
-												<td class="center hidden-phone">121313123413</td>
-												<td class="center hidden-phone">2016-09-18 10:23:00</td>
-												<td class="center hidden-phone">2016-09-18 12:23:00</td>
-												<td class="center hidden-phone">香蕉*6</td>
-												<td class="center hidden-phone">北京市昌平区回龙观二拨子工业园区北京人家小区</td>
-												<td class="center hidden-phone">18点以后送到</td>
-												<td class="center hidden-phone"></td>
-											</tr>
-											<tr class="gradeX">
-												<td>1010003</td>
-												<td class="hidden-phone">
-													13212344303
-												</td>
-												<td>03</td>
-												<td class="center hidden-phone">王尼玛</td>
-												<td class="center hidden-phone">自提</td>
-												<td class="center hidden-phone">10.00</td>
-												<td class="center hidden-phone">已退款</td>
-												<td class="center hidden-phone">微信支付</td>
-												<td class="center hidden-phone">121318533313</td>
-												<td class="center hidden-phone">2015-09-20 12:23:00</td>
-												<td class="center hidden-phone">2015-09-20 12:40:00</td>
-												<td class="center hidden-phone">葡萄*1，苹果*2，香蕉*6</td>
-												<td class="center hidden-phone">我是地址我是地址我是地址我是地址我是地址我是地址我是地址</td>
-												<td class="center hidden-phone"></td>
-												<td class="center hidden-phone"></td>
-											</tr>
-											<tr class="gradeX">
-												<td>1010008</td>
-												<td class="hidden-phone">
-													13212344304
-												</td>
-												<td>04</td>
-												<td class="center hidden-phone">张三</td>
-												<td class="center hidden-phone">自提</td>
-												<td class="center hidden-phone">190.00</td>
-												<td class="center hidden-phone">已付款</td>
-												<td class="center hidden-phone">余额支付</td>
-												<td class="center hidden-phone">121313133896</td>
-												<td class="center hidden-phone">2015-09-20 18:23:00</td>
-												<td class="center hidden-phone">2015-09-20 18:50:00</td>
-												<td class="center hidden-phone">苹果*2，香蕉*6</td>
-												<td class="center hidden-phone">我是地址我是地址我是地址我是地址我是地址我是地址我是地址</td>
-												<td class="center hidden-phone">20点以后送到</td>
-												<td class="center hidden-phone"></td>
-											</tr>
-											<tr class="gradeX">
-												<td>1010020</td>
-												<td class="hidden-phone">
-													13212344315
-												</td>
-												<td>08</td>
-												<td class="center hidden-phone">李四</td>
-												<td class="center hidden-phone">送货上门</td>
-												<td class="center hidden-phone">250.00</td>
-												<td class="center hidden-phone">已退款</td>
-												<td class="center hidden-phone">微信+余额支付</td>
-												<td class="center hidden-phone">121313174813</td>
-												<td class="center hidden-phone">2015-09-20 14:20:00</td>
-												<td class="center hidden-phone">2015-09-20 14:23:00</td>
-												<td class="center hidden-phone">葡萄*1，香蕉*6</td>
-												<td class="center hidden-phone">我是地址我是地址我是地址我是地址我是地址我是地址我是地址</td>
-												<td class="center hidden-phone"></td>
-												<td class="center hidden-phone"></td>
-											</tr>
-											<tr class="gradeX">
-												<td>1010001</td>
-												<td class="hidden-phone">
-													13212344301
-												</td>
-												<td>01</td>
-												<td class="center hidden-phone">杨洋</td>
-												<td class="center hidden-phone">送货上门</td>
-												<td class="center hidden-phone">100.00</td>
-												<td class="center hidden-phone">未付款</td>
-												<td class="center hidden-phone">微信支付</td>
-												<td class="center hidden-phone">121313133313</td>
-												<td class="center hidden-phone">2016-09-20 12:23:00</td>
-												<td class="center hidden-phone">2016-09-20 12:24:00</td>
-												<td class="center hidden-phone">葡萄*1</td>
-												<td class="center hidden-phone">北京市海淀区上地七街汇众大厦2号楼713室</td>
-												<td class="center hidden-phone">18点以后送到</td>
-												<td class="center hidden-phone"></td>
-											</tr>
-											<tr class="gradeX">
-												<td>1010002</td>
-												<td class="hidden-phone">
-													13212344302
-												</td>
-												<td>02</td>
-												<td class="center hidden-phone">送悟空</td>
-												<td class="center hidden-phone">送货上门</td>
-												<td class="center hidden-phone">100.00</td>
-												<td class="center hidden-phone">已取消</td>
-												<td class="center hidden-phone">余额支付</td>
-												<td class="center hidden-phone">121313123413</td>
-												<td class="center hidden-phone">2016-09-18 10:23:00</td>
-												<td class="center hidden-phone">2016-09-18 12:23:00</td>
-												<td class="center hidden-phone">香蕉*6</td>
-												<td class="center hidden-phone">北京市昌平区回龙观二拨子工业园区北京人家小区</td>
-												<td class="center hidden-phone">18点以后送到</td>
-												<td class="center hidden-phone"></td>
-											</tr>
-											<tr class="gradeX">
-												<td>1010003</td>
-												<td class="hidden-phone">
-													13212344303
-												</td>
-												<td>03</td>
-												<td class="center hidden-phone">王尼玛1</td>
-												<td class="center hidden-phone">自提</td>
-												<td class="center hidden-phone">10.00</td>
-												<td class="center hidden-phone">已退款</td>
-												<td class="center hidden-phone">微信支付</td>
-												<td class="center hidden-phone">121318533313</td>
-												<td class="center hidden-phone">2015-09-20 12:23:00</td>
-												<td class="center hidden-phone">2015-09-20 12:40:00</td>
-												<td class="center hidden-phone">葡萄*1，苹果*2，香蕉*6</td>
-												<td class="center hidden-phone">我是地址我是地址我是地址我是地址我是地址我是地址我是地址</td>
-												<td class="center hidden-phone"></td>
-												<td class="center hidden-phone"></td>
-											</tr>
-											<tr class="gradeX">
-												<td>1010008</td>
-												<td class="hidden-phone">
-													13212344304
-												</td>
-												<td>04</td>
-												<td class="center hidden-phone">张三1</td>
-												<td class="center hidden-phone">自提</td>
-												<td class="center hidden-phone">190.00</td>
-												<td class="center hidden-phone">已付款</td>
-												<td class="center hidden-phone">余额支付</td>
-												<td class="center hidden-phone">121313133896</td>
-												<td class="center hidden-phone">2015-09-20 18:23:00</td>
-												<td class="center hidden-phone">2015-09-20 18:50:00</td>
-												<td class="center hidden-phone">苹果*2，香蕉*6</td>
-												<td class="center hidden-phone">我是地址我是地址我是地址我是地址我是地址我是地址我是地址</td>
-												<td class="center hidden-phone">20点以后送到</td>
-												<td class="center hidden-phone"></td>
-											</tr>
-											<tr class="gradeX">
-												<td>1010020</td>
-												<td class="hidden-phone">
-													13212344315
-												</td>
-												<td>08</td>
-												<td class="center hidden-phone">李四1</td>
-												<td class="center hidden-phone">送货上门</td>
-												<td class="center hidden-phone">250.00</td>
-												<td class="center hidden-phone">已退款</td>
-												<td class="center hidden-phone">微信+余额支付</td>
-												<td class="center hidden-phone">121313174813</td>
-												<td class="center hidden-phone">2015-09-20 14:20:00</td>
-												<td class="center hidden-phone">2015-09-20 14:23:00</td>
-												<td class="center hidden-phone">葡萄*1，香蕉*6</td>
-												<td class="center hidden-phone">我是地址我是地址我是地址我是地址我是地址我是地址我是地址</td>
-												<td class="center hidden-phone"></td>
-												<td class="center hidden-phone"></td>
-											</tr>
-											<tr class="gradeX">
-												<td>1010001</td>
-												<td class="hidden-phone">
-													13212344301
-												</td>
-												<td>01</td>
-												<td class="center hidden-phone">杨洋1</td>
-												<td class="center hidden-phone">送货上门</td>
-												<td class="center hidden-phone">100.00</td>
-												<td class="center hidden-phone">未付款</td>
-												<td class="center hidden-phone">微信支付</td>
-												<td class="center hidden-phone">121313133313</td>
-												<td class="center hidden-phone">2016-09-20 12:23:00</td>
-												<td class="center hidden-phone">2016-09-20 12:24:00</td>
-												<td class="center hidden-phone">葡萄*1</td>
-												<td class="center hidden-phone">北京市海淀区上地七街汇众大厦2号楼713室</td>
-												<td class="center hidden-phone">18点以后送到</td>
-												<td class="center hidden-phone"></td>
-											</tr>
-											<tr class="gradeX">
-												<td>1010002</td>
-												<td class="hidden-phone">
-													13212344302
-												</td>
-												<td>02</td>
-												<td class="center hidden-phone">送悟空1</td>
-												<td class="center hidden-phone">送货上门</td>
-												<td class="center hidden-phone">100.00</td>
-												<td class="center hidden-phone">已取消</td>
-												<td class="center hidden-phone">余额支付</td>
-												<td class="center hidden-phone">121313123413</td>
-												<td class="center hidden-phone">2016-09-18 10:23:00</td>
-												<td class="center hidden-phone">2016-09-18 12:23:00</td>
-												<td class="center hidden-phone">香蕉*6</td>
-												<td class="center hidden-phone">北京市昌平区回龙观二拨子工业园区北京人家小区</td>
-												<td class="center hidden-phone">18点以后送到</td>
-												<td class="center hidden-phone"></td>
-											</tr>
-											<tr class="gradeX">
-												<td>1010003</td>
-												<td class="hidden-phone">
-													13212344303
-												</td>
-												<td>03</td>
-												<td class="center hidden-phone">王尼玛2</td>
-												<td class="center hidden-phone">自提</td>
-												<td class="center hidden-phone">10.00</td>
-												<td class="center hidden-phone">已退款</td>
-												<td class="center hidden-phone">微信支付</td>
-												<td class="center hidden-phone">121318533313</td>
-												<td class="center hidden-phone">2015-09-20 12:23:00</td>
-												<td class="center hidden-phone">2015-09-20 12:40:00</td>
-												<td class="center hidden-phone">葡萄*1，苹果*2，香蕉*6</td>
-												<td class="center hidden-phone">我是地址我是地址我是地址我是地址我是地址我是地址我是地址</td>
-												<td class="center hidden-phone"></td>
-												<td class="center hidden-phone"></td>
-											</tr>
-											<tr class="gradeX">
-												<td>1010008</td>
-												<td class="hidden-phone">
-													13212344304
-												</td>
-												<td>04</td>
-												<td class="center hidden-phone">张三2</td>
-												<td class="center hidden-phone">自提</td>
-												<td class="center hidden-phone">190.00</td>
-												<td class="center hidden-phone">已付款</td>
-												<td class="center hidden-phone">余额支付</td>
-												<td class="center hidden-phone">121313133896</td>
-												<td class="center hidden-phone">2015-09-20 18:23:00</td>
-												<td class="center hidden-phone">2015-09-20 18:50:00</td>
-												<td class="center hidden-phone">苹果*2，香蕉*6</td>
-												<td class="center hidden-phone">我是地址我是地址我是地址我是地址我是地址我是地址我是地址</td>
-												<td class="center hidden-phone">20点以后送到</td>
-												<td class="center hidden-phone"></td>
-											</tr>
-											<tr class="gradeX">
-												<td>1010020</td>
-												<td class="hidden-phone">
-													13212344315
-												</td>
-												<td>08</td>
-												<td class="center hidden-phone">李四2</td>
-												<td class="center hidden-phone">送货上门</td>
-												<td class="center hidden-phone">250.00</td>
-												<td class="center hidden-phone">已退款</td>
-												<td class="center hidden-phone">微信+余额支付</td>
-												<td class="center hidden-phone">121313174813</td>
-												<td class="center hidden-phone">2015-09-20 14:20:00</td>
-												<td class="center hidden-phone">2015-09-20 14:23:00</td>
-												<td class="center hidden-phone">葡萄*1，香蕉*6</td>
-												<td class="center hidden-phone">我是地址我是地址我是地址我是地址我是地址我是地址我是地址</td>
-												<td class="center hidden-phone"></td>
-												<td class="center hidden-phone"></td>
-											</tr>
-											<tr class="gradeX">
-												<td>1010001</td>
-												<td class="hidden-phone">
-													13212344301
-												</td>
-												<td>01</td>
-												<td class="center hidden-phone">杨洋2</td>
-												<td class="center hidden-phone">送货上门</td>
-												<td class="center hidden-phone">100.00</td>
-												<td class="center hidden-phone">未付款</td>
-												<td class="center hidden-phone">微信支付</td>
-												<td class="center hidden-phone">121313133313</td>
-												<td class="center hidden-phone">2016-09-20 12:23:00</td>
-												<td class="center hidden-phone">2016-09-20 12:24:00</td>
-												<td class="center hidden-phone">葡萄*1</td>
-												<td class="center hidden-phone">北京市海淀区上地七街汇众大厦2号楼713室</td>
-												<td class="center hidden-phone">18点以后送到</td>
-												<td class="center hidden-phone"></td>
-											</tr>
-											<tr class="gradeX">
-												<td>1010002</td>
-												<td class="hidden-phone">
-													13212344302
-												</td>
-												<td>02</td>
-												<td class="center hidden-phone">送悟空2</td>
-												<td class="center hidden-phone">送货上门</td>
-												<td class="center hidden-phone">100.00</td>
-												<td class="center hidden-phone">已取消</td>
-												<td class="center hidden-phone">余额支付</td>
-												<td class="center hidden-phone">121313123413</td>
-												<td class="center hidden-phone">2016-09-18 10:23:00</td>
-												<td class="center hidden-phone">2016-09-18 12:23:00</td>
-												<td class="center hidden-phone">香蕉*6</td>
-												<td class="center hidden-phone">北京市昌平区回龙观二拨子工业园区北京人家小区</td>
-												<td class="center hidden-phone">18点以后送到</td>
-												<td class="center hidden-phone"></td>
-											</tr>
-											<tr class="gradeX">
-												<td>1010003</td>
-												<td class="hidden-phone">
-													13212344303
-												</td>
-												<td>03</td>
-												<td class="center hidden-phone">王尼玛3</td>
-												<td class="center hidden-phone">自提</td>
-												<td class="center hidden-phone">10.00</td>
-												<td class="center hidden-phone">已退款</td>
-												<td class="center hidden-phone">微信支付</td>
-												<td class="center hidden-phone">121318533313</td>
-												<td class="center hidden-phone">2015-09-20 12:23:00</td>
-												<td class="center hidden-phone">2015-09-20 12:40:00</td>
-												<td class="center hidden-phone">葡萄*1，苹果*2，香蕉*6</td>
-												<td class="center hidden-phone">我是地址我是地址我是地址我是地址我是地址我是地址我是地址</td>
-												<td class="center hidden-phone"></td>
-												<td class="center hidden-phone"></td>
-											</tr>
-											<tr class="gradeX">
-												<td>1010008</td>
-												<td class="hidden-phone">
-													13212344304
-												</td>
-												<td>04</td>
-												<td class="center hidden-phone">张三3</td>
-												<td class="center hidden-phone">自提</td>
-												<td class="center hidden-phone">190.00</td>
-												<td class="center hidden-phone">已付款</td>
-												<td class="center hidden-phone">余额支付</td>
-												<td class="center hidden-phone">121313133896</td>
-												<td class="center hidden-phone">2015-09-20 18:23:00</td>
-												<td class="center hidden-phone">2015-09-20 18:50:00</td>
-												<td class="center hidden-phone">苹果*2，香蕉*6</td>
-												<td class="center hidden-phone">我是地址我是地址我是地址我是地址我是地址我是地址我是地址</td>
-												<td class="center hidden-phone">20点以后送到</td>
-												<td class="center hidden-phone"></td>
-											</tr>
-											<tr class="gradeX">
-												<td>1010020</td>
-												<td class="hidden-phone">
-													13212344315
-												</td>
-												<td>08</td>
-												<td class="center hidden-phone">李四3</td>
-												<td class="center hidden-phone">送货上门</td>
-												<td class="center hidden-phone">250.00</td>
-												<td class="center hidden-phone">已退款</td>
-												<td class="center hidden-phone">微信+余额支付</td>
-												<td class="center hidden-phone">121313174813</td>
-												<td class="center hidden-phone">2015-09-20 14:20:00</td>
-												<td class="center hidden-phone">2015-09-20 14:23:00</td>
-												<td class="center hidden-phone">葡萄*1，香蕉*6</td>
-												<td class="center hidden-phone">我是地址我是地址我是地址我是地址我是地址我是地址我是地址</td>
-												<td class="center hidden-phone"></td>
-												<td class="center hidden-phone"></td>
-											</tr>
-										</tbody>
 									</table>
 								</div>
 							</div>
@@ -606,6 +217,15 @@
 	<script src="moudle/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script><!-- BOOTSTRAP DATETIMEPICKER JS  -->
 	<script src="js/advanced_form_components.js" ></script><!-- ADVANCE FORM COMPONENTS PAGE JS  -->
 	<!-- END JS -->
+	<!-- BEGIN PRIONT EXECL JS -->
+		<script src="moudle/buttons/js/buttons.html5.min.js"></script>
+		<script src="moudle/buttons/js/vfs_fonts.js"></script>
+		<script src="moudle/buttons/js/pdfmake.min.js"></script>
+		<script src="moudle/buttons/js/dataTables.buttons.min.js"></script>
+		<script src="moudle/buttons/js/buttons.flash.min.js"></script>
+		<script src="moudle/buttons/js/jszip.min.js"></script>
+		<script src="moudle/buttons/js/buttons.print.min.js"></script>
+	<!-- END JS-->
 </body>
 
 </html>

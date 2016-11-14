@@ -3,7 +3,6 @@ $(document).ready(function () {
         var DataTable=function(){
             var dataParameter={};
             $('#query').click(function(table){
-                QueryParameter();
 				table_api.ajax.reload(null, false );
             });
             $('#clear').click(function(){
@@ -13,11 +12,6 @@ $(document).ready(function () {
 
             function ClearParameter (){
                 dataParameter={};
-            };
-            function QueryParameter (){
-                dataParameter.name=$('#name').val();
-                dataParameter.mob=$('#mob').val();
-                dataParameter.status=$('option:selected').val(); 
             };
 			//表格渲染配置
             var table_api=$('#example').DataTable({

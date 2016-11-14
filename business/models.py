@@ -27,3 +27,32 @@ class Bulk(models.Model):
 	def __unicode__(self):
                 return self.title
 
+
+class Order(models.Model):
+	id = models.CharField(max_length=200, primary_key=True)
+	mob = models.CharField(max_length=20, null=True, blank=True)
+	user_id = models.IntegerField(max_length=11)
+	bulk = models.ForeignKey('Bulk')
+	receive_mode = models.IntegerField(max_length=11, default=2)
+	storages = models.CharField(max_length=11)
+        payment_method = models.CharField(max_length=11)
+	payment_id = models.IntegerField(max_length=11)
+        payment_time = models.DateTimeField()
+ 	logistics = models.IntegerField(max_length=11)
+        detailed = models.CharField(max_length=11)
+	payment_price = models.IntegerField(max_length=11)
+	
+	receive_name = models.CharField(max_length=200, null=True, blank=True)
+	receive_mob = models.CharField(max_length=20, null=True, blank=True)
+	receive_address = models.TextField(null=True, blank=True)
+	status = models.IntegerField(max_length=11)
+	freight = models.IntegerField(max_length=11)
+	total_fee = models.IntegerField(max_length=11)
+	seq = models.IntegerField(max_length=11, default=0)
+	create_time = models.DateTimeField(auto_now=True)
+	obtain_name = models.CharField(max_length=100, null=True, blank=True)
+	obtain_mob = models.CharField(max_length=20, null=True, blank=True)
+	is_delete = models.BooleanField(default=False)
+	comments = models.TextField(null=True, blank=True)
+	def __unicode__(self):
+		return 	self.bulk.title
