@@ -2,11 +2,13 @@ $(document).ready(function () {
 		
         var DataTable=function(){
             var dataParameter={};
-            $('#query').click(function(){
+            $('#query').click(function(table){
                 QueryParameter();
+				table_api.ajax.reload(null, false );
             });
             $('#clear').click(function(){
-                ClearParameter();
+				$('#form_table')[0].reset();
+				table_api.ajax.reload(null, true );
             });
 
             function ClearParameter (){
@@ -16,31 +18,47 @@ $(document).ready(function () {
                 dataParameter.name=$('#name').val();
                 dataParameter.mob=$('#mob').val();
                 dataParameter.status=$('option:selected').val(); 
-                console.log(dataParameter);
             };
-
-            $('#example').dataTable({
+			//表格渲染配置
+            var table_api=$('#example').DataTable({
+				dom: 'Bfrtip',
+				buttons: [
+				    {extend:'copy',text:'复制'},
+					{extend:'csv',text:'导出csv格式'},
+					{extend:'excel',text:'导出excel'},
+					{
+						extend:'print',
+						text:'打印',
+						message:'一家一农订单详情',
+						customize:function(win){
+							$(win.document.body)
+								.css('font-size','10pt')
+								/*.prepend(
+									'<img src="http://datatables.net/media/images/logo-fade.png" style="position:absolute; top:0; left:0;" />'
+								);*/
+							$(win.document.body).find( 'table' )
+								.addClass( 'compact' )
+								.css( 'font-size', 'inherit' );
+						}
+						
+					}
+					
+					
+				],
                 "processing": true,
                 "serverSide": true,
                 "paging":true,
-                "iDisplayLength": 10,
+                "iDisplayLength": 25,
 				"sLoadingRecords": "加载中...",
-               
                 "order":[],
-                "ajaxSource":"http://192.168.44.128:8080/datasource/ajaxsource/api/",
+                "ajaxSource":"http://192.168.102.167:8080/datasource/ajaxsource/api/",
 				"fnServerParams":function(aoData){
 					aoData.push(
-						{'name':'batch_name','value':$('#name').val()}
+						{'name':'batch_name','value':$('#name').val()},
+						{'name':'batch_mob','value':$('#mob').val()},
+						{'name':'batch_status','value':$('#status option:selected').val()}
 					)
 				},
-                /*"ajax":{
-                    "url":"data2.json",
-                    "data":function(data){
-                        $.each(dataParameter,function(key,value){
-                            data[key]=value;
-                        });
-                    }
-                },*/
                "columns": [
                             { "mData ": "col0"},
                             { "mData ": "col1"},
@@ -95,11 +113,11 @@ $(document).ready(function () {
                         "sLast":     " 最后一页 "
                     }
                 },
-               /* "initComplete": function(settings, json) {
-                    alert( 'DataTables has finished its initialisation.' );
-                }
-*/
+				
             });
+			
+			
+			
     };
 
 DataTable();

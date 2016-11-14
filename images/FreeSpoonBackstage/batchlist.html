@@ -21,6 +21,9 @@
 	<link rel="stylesheet" href="moudle/data-tables/DT_bootstrap.css"><!-- DATATABLE CSS -->
 	<link href="css/style.css" rel="stylesheet"><!-- THEME BASIC CSS -->
 	<link href="css/style-responsive.css" rel="stylesheet"><!-- THEME BASIC RESPONSIVE  CSS -->
+	
+	<link href="moudle/buttons/css/buttons.dataTables.min.css" rel="stylesheet">
+	<link href="moudle/buttons/css/jquery.dataTables.min.css" rel="stylesheet">
 	<!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
@@ -71,14 +74,14 @@
 			<div id="sidebar" class="nav-collapse">
 				<ul class="sidebar-menu" id="nav-accordion">
 					<li class="sub-menu">
-						<a href="javascript:;">
+						<a href="batchlist.html">
 							<i class="fa fa-list"></i>
-							<span>团购管理</span>
+							<span>团购列表页</span>
 						</a>
-						<ul class="sub">
+						<!--<ul class="sub">
 							<li><a href="batchlist.html">团购列表页</a></li>
 							<li><a href="batchdetails.html">团购详情</a></li>
-						</ul>
+						</ul>-->
 					</li>
 					<li>
 						<a href="order.html">
@@ -106,7 +109,7 @@
                            </span>
 							</header>
 							<div class="panel-body">
-								<form class="form-inline" role="form">
+								<form id='form_table' class="form-inline" role="form">
 									<div class="form-group">
 										<input type="text" class="form-control" id="name" placeholder="团购名称">
 									</div>
@@ -114,7 +117,7 @@
 										<input type="text" class="form-control" id="mob" placeholder="团主手机号">
 									</div>
 									<span class="label label-warning">团购状态</span>
-										<select class="input-small inline form-control" style="width:100px">
+										<select id='status' class="input-small inline form-control" style="width:100px">
 											<option value="0">未开始</option>
 											<option value="1">已开始</option>
 											<option value="2">已截团</option>
@@ -146,7 +149,6 @@
 												<th class="hidden-phone">团购状态</th>
 												<th class="hidden-phone">销售量</th>
 												<th class="hidden-phone">操作</th>
-											
 											</tr>
 										</thead>
 									</table>
@@ -175,12 +177,21 @@
 	<script src="js/jquery.dcjqaccordion.2.7.js"></script><!-- ACCORDING JS -->
 	<script src="js/jquery.scrollTo.min.js"></script><!-- SCROLLTO JS  -->
 	<script src="js/jquery.nicescroll.js"> </script><!-- NICESCROLL JS  -->
-	<script src="moudle/advanced-datatable/media/js/jquery.dataTables.min.js"></script><!-- BASIC COMMON JS  -->
+	<script src="moudle/advanced-datatable/media/js/jquery.dataTables.js"></script><!-- BASIC COMMON JS  -->
 	<script src="moudle/data-tables/DT_bootstrap.js"></script><!-- DATATABLE BOOTSTRAP JS  -->
 	<script src="js/respond.min.js"></script><!-- RESPOND JS  -->
 	<script src="js/common-scripts.js"></script><!-- BASIC COMMON JS  -->
 	<script src="assets/js/batchlist.js"></script><!-- control datatable js -->
 	<!-- END JS -->
+	<!-- BEGIN PRIONT EXECL JS -->
+		<script src="moudle/buttons/js/buttons.html5.min.js"></script>
+		<script src="moudle/buttons/js/vfs_fonts.js"></script>
+		<script src="moudle/buttons/js/pdfmake.min.js"></script>
+		<script src="moudle/buttons/js/dataTables.buttons.min.js"></script>
+		<script src="moudle/buttons/js/buttons.flash.min.js"></script>
+		<script src="moudle/buttons/js/jszip.min.js"></script>
+		<script src="moudle/buttons/js/buttons.print.min.js"></script>
+	<!-- END JS-->
 </body>
 
 </html>
