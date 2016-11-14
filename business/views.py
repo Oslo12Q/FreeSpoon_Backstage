@@ -23,6 +23,6 @@ class OrderView(FeedDataView):
     token = OrderTable.token
 
     def get_queryset(self):
-        batch_name = request.data.get('batch_name',None)
-	print batch_name
+#        batch_name = request.data.get('batch_name',None)
+#	print batch_name
 	return super(OrderView,self).get_queryset().filter(title = batch_name)
