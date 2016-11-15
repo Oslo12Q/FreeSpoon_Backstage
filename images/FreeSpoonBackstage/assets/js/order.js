@@ -1,7 +1,6 @@
 $(document).ready(function () {
 		
         var DataTable=function(){
-            var dataParameter={};
             $('#query').click(function(table){
 				table_api.ajax.reload(null, false );
 				console.log($('#name').val());
@@ -11,9 +10,6 @@ $(document).ready(function () {
 				table_api.ajax.reload(null, true );
             });
 
-            function ClearParameter (){
-                dataParameter={};
-            };
 			//表格渲染配置
             var table_api=$('#example').DataTable({
 				dom: 'Bfrtip',
@@ -49,12 +45,13 @@ $(document).ready(function () {
                 "ajaxSource":"http://192.168.102.167:8080/order/",
 				"fnServerParams":function(aoData){
 					aoData.push(
-						{'name':'filter[batch_name]','value':$('#name').val()},
-						{'name':'batch_mob','value':$('#mob').val()},
-						{'name':'pay_status','value':$('#pay_status option:selected').val()},
-						{'name':'pay_method','value':$('#pay_method option:selected').val()},
-						{'name':'start_day','value':$('#start_day').val()},
-						{'name':'end_day','value':$('#end_day').val()}
+						{'name':'filter[order_number]','value':$('#name').val()},
+						{'name':'filter[order_mob]','value':$('#mob').val()},
+						{'name':'filter[pay_status]','value':$('#pay_status option:selected').val()},
+						{'name':'filter[pay_method]','value':$('#pay_method option:selected').val()},
+						{'name':'filter[start_day]','value':$('#start_day').val()},
+						{'name':'filter[batch_id]','value':''},
+						{'name':'filter[end_day]','value':$('#end_day').val()}
 					)
 				},
                "columns": [

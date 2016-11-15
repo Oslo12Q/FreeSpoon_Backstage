@@ -1,7 +1,6 @@
 $(document).ready(function () {
 		
         var DataTable=function(){
-            var dataParameter={};
             $('#query').click(function(table){
 				table_api.ajax.reload(null, false );
             });
@@ -10,9 +9,6 @@ $(document).ready(function () {
 				table_api.ajax.reload(null, true );
             });
 
-            function ClearParameter (){
-                dataParameter={};
-            };
 			//表格渲染配置
             var table_api=$('#example').DataTable({
 				dom: 'Bfrtip',
@@ -50,6 +46,7 @@ $(document).ready(function () {
 					aoData.push(
 						{'name':'filter[batch_name]','value':$('#name').val()},
 						{'name':'filter[batch_mob]','value':$('#mob').val()},
+						{'name':'filter[batch_id]','value':''},
 						{'name':'fileter[batch_status]','value':$('#status option:selected').val()}
 					)
 				},
@@ -62,7 +59,8 @@ $(document).ready(function () {
                             { "mData ": "col5"},
                             { "mData ": "col6"},
                             { "mData ": "col7"},
-                            { "mData ": "col8"}
+                            { "mData ": "col8"},
+							{ "mData ": "col9"}
                         ],
                 "columnDefs": [ 
                     {"targets": -1,"orderable": false},
@@ -89,7 +87,9 @@ $(document).ready(function () {
                             return '未开始';
                         }else if(data==1){
                             return '已截团';
-                        }
+                        }else if(data==3){
+							return '已发货';
+						}
                     }}
                 ],
                 "oLanguage": {
@@ -108,10 +108,7 @@ $(document).ready(function () {
                     }
                 },
 				
-            });
-			
-			
-			
+            });	
     };
 
 DataTable();

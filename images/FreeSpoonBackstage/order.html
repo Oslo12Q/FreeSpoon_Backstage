@@ -111,15 +111,16 @@
 								<form id='form_table' class="form-inline" role="form">
 									<div class="form-group col-lg-3">
 										<div class="form-group">
-											<input type="text" class="form-control" id="name" placeholder="团购名称">
+											<input type="text" class="form-control" id="name" placeholder="订单编号">
 										</div>
 										<div class="form-group">
-											<input type="text" class="form-control" id="mob" placeholder="团主手机号">
+											<input type="text" class="form-control" id="mob" placeholder="手机号">
 										</div>
 									</div>
 									<div class="form-group col-lg-3">
 										<span class="label label-warning">订单状态</span>
 										<select id='pay_status' class="input-small inline form-control" style="width:90px">
+											<option value="">未选择</option>
 											<option value="0">未付款</option>
 											<option value="1">已付款</option>
 											<option value="2">已发货</option>
@@ -129,6 +130,7 @@
 										</select>
 										<span class="label label-warning">付款方式</span>
 										<select id='pay_method' class="input-small inline form-control" style="width:120px">
+											<option value="">未选择</option>
 											<option value="0">微信支付</option>
 											<option value="1">余额支付</option>
 											<option value="2">微信+余额</option>

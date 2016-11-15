@@ -26,19 +26,20 @@
   
 
 
-  <link href="moudle/font-awesome/css/font-awesome.css" rel="stylesheet"><!-- FONT AWESOME ICON STYLESHEET -->
-<link rel="stylesheet" type="text/css" href="moudle/bootstrap-fileupload/bootstrap-fileupload.css"><!-- BOOTSTRAP FILEUPLOAD PLUGIN CSS -->
-<link rel="stylesheet" type="text/css" href="moudle/bootstrap-wysihtml5/bootstrap-wysihtml5.css"><!-- BOOTSTRAP WYSIHTML5 PLUGIN CSS -->
-<link rel="stylesheet" type="text/css" href="moudle/bootstrap-datepicker/css/datepicker.css"><!-- BOOTSTRAP DATEPICKER PLUGIN CSS -->
-<link rel="stylesheet" type="text/css" href="moudle/bootstrap-timepicker/compiled/timepicker.css"><!-- BOOTSTRAP TIMEPICKER PLUGIN CSS -->
-<link rel="stylesheet" type="text/css" href="moudle/bootstrap-colorpicker/css/colorpicker.css"><!-- BOOTSTRAP COLORPICKER PLUGIN CSS -->
-<link rel="stylesheet" type="text/css" href="moudle/bootstrap-daterangepicker/daterangepicker-bs3.css"><!-- DATERANGE PLUGIN CSS -->
-<link rel="stylesheet" type="text/css" href="moudle/bootstrap-datetimepicker/css/datetimepicker.css"><!-- DATETIMEPICKER PLUGIN CSS -->
-<link rel="stylesheet" type="text/css" href="moudle/jquery-multi-select/css/multi-select.css"><!-- JQUERY MULTI SELECT PLUGIN CSS -->
-<link href="css/style.css" rel="stylesheet"><!-- THEME BASIC CSS -->
-<link href="css/style-responsive.css" rel="stylesheet"><!-- THEME BASIC RESPONSIVE  CSS -->
-
-
+	<link href="moudle/font-awesome/css/font-awesome.css" rel="stylesheet"><!-- FONT AWESOME ICON STYLESHEET -->
+	<link rel="stylesheet" type="text/css" href="moudle/bootstrap-fileupload/bootstrap-fileupload.css"><!-- BOOTSTRAP FILEUPLOAD PLUGIN CSS -->
+	<link rel="stylesheet" type="text/css" href="moudle/bootstrap-wysihtml5/bootstrap-wysihtml5.css"><!-- BOOTSTRAP WYSIHTML5 PLUGIN CSS -->
+	<link rel="stylesheet" type="text/css" href="moudle/bootstrap-datepicker/css/datepicker.css"><!-- BOOTSTRAP DATEPICKER PLUGIN CSS -->
+	<link rel="stylesheet" type="text/css" href="moudle/bootstrap-timepicker/compiled/timepicker.css"><!-- BOOTSTRAP TIMEPICKER PLUGIN CSS -->
+	<link rel="stylesheet" type="text/css" href="moudle/bootstrap-colorpicker/css/colorpicker.css"><!-- BOOTSTRAP COLORPICKER PLUGIN CSS -->
+	<link rel="stylesheet" type="text/css" href="moudle/bootstrap-daterangepicker/daterangepicker-bs3.css"><!-- DATERANGE PLUGIN CSS -->
+	<link rel="stylesheet" type="text/css" href="moudle/bootstrap-datetimepicker/css/datetimepicker.css"><!-- DATETIMEPICKER PLUGIN CSS -->
+	<link rel="stylesheet" type="text/css" href="moudle/jquery-multi-select/css/multi-select.css"><!-- JQUERY MULTI SELECT PLUGIN CSS -->
+	<link href="css/style.css" rel="stylesheet"><!-- THEME BASIC CSS -->
+	<link href="css/style-responsive.css" rel="stylesheet"><!-- THEME BASIC RESPONSIVE  CSS -->
+	
+	<link href="moudle/buttons/css/buttons.dataTables.min.css" rel="stylesheet">
+	<link href="moudle/buttons/css/jquery.dataTables.min.css" rel="stylesheet">
 	<!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
@@ -117,64 +118,35 @@
 								<span class="tools pull-right"><a href="javascript:;" class="fa fa-chevron-down"></a></span>
 							</header>
 							<div class="panel-body">
-								<div class="col-lg-12 lead">
-									<div class="col-lg-3">
-										<span>团购编号:</span>
-										<span>10101010</span>
-									</div>
-									<div class="col-lg-3">
-										<span>团购名称:</span>
-										<span>金秋大闸蟹</span>
-									</div>
-								</div>
-								<div class="col-lg-12 lead">
-									<div class="col-lg-3">
-										<span>团主名称:</span>
-										<span>一家一农</span>
-									</div>
-									<div class="col-lg-3">
-										<span>团购类型:</span>
-										<span>自提/快递</span>
-									</div>
-									<div class="col-lg-3">
-										<span>开始时间:</span>
-										<span>2016-09-20 12:23:00</span>
-									</div>
-									<div class="col-lg-3">
-										<span>销售量:</span>
-										<span>90</span>
-									</div>
-								</div>
-								<div class="col-lg-12 lead">
-									<div class="col-lg-3">
-										<span>团主手机号:</span>
-										<span>15209633819</span>
-									</div>
-									<div class="col-lg-3">
-										<span>团购状态:</span>
-										<span>已发货</span>
-									</div>
-									<div class="col-lg-3">
-										<span>开始时间:</span>
-										<span>2016-09-20 12:23:00</span>
-									</div>
-									<div class="col-lg-3">
-										<span>虚拟用户:</span>
-										<span>50</span>
-									</div>
-								</div>
-								<form class="form-inline" role="form">
+								<table class="display table  table-striped" id="batch">
+									<thead>
+										<tr>
+											<th class="hidden-phone">团购编号</th>
+											<th>团购名称</th>
+											<th class="hidden-phone">团主名称</th>
+											<th class="hidden-phone">团主手机号</th>
+											<th class="hidden-phone">团购类型</th>
+											<th class="hidden-phone">开始时间</th>
+											<th class="hidden-phone">结束时间</th>
+											<th>团购状态</th>
+											<th class="hidden-phone">销售量</th>
+											<th class="hidden-phone">操作</th>
+										</tr>
+									</thead>
+								</table>
+								<form id='form_table' class="form-inline" role="form">
 									<div class="form-group col-lg-3">
 										<div class="form-group">
-											<input type="text" class="form-control" id="exampleInputEmail2" placeholder="团购名称">
+											<input type="text" class="form-control" id="name" placeholder="订单编号">
 										</div>
 										<div class="form-group">
-											<input type="text" class="form-control" id="exampleInputPassword2" placeholder="团主手机号">
+											<input type="text" class="form-control" id="mob" placeholder="手机号">
 										</div>
 									</div>
 									<div class="form-group col-lg-3">
 										<span class="label label-warning">订单状态</span>
-										<select class="input-small inline form-control" style="width:90px">
+										<select id='pay_status' class="input-small inline form-control" style="width:90px">
+											<option value="">未选择</option>
 											<option value="0">未付款</option>
 											<option value="1">已付款</option>
 											<option value="2">已发货</option>
@@ -183,7 +155,8 @@
 											<option value="5">已过期</option>
 										</select>
 										<span class="label label-warning">付款方式</span>
-										<select class="input-small inline form-control" style="width:120px">
+										<select id='pay_method' class="input-small inline form-control" style="width:120px">
+											<option value="">未选择</option>
 											<option value="0">微信支付</option>
 											<option value="1">余额支付</option>
 											<option value="2">微信+余额</option>
@@ -194,17 +167,17 @@
 									<div class="form-group">
 										<div class="col-md-12">
 											<div class="input-group input-large" data-date="" data-date-format="yyyy/mm/dd">
-												<input type="text" class="form-control dpd1" name="from">
+												<input id='start_day' type="text" class="form-control dpd1" name="from">
 												<span class="input-group-addon">To</span>
-												<input type="text" class="form-control dpd2" name="to">
+												<input id='end_day' type="text" class="form-control dpd2" name="to">
 											</div>   
 										</div>
 									</div>
 									<!--date range end-->
 									</div>
 									<div class="form-group col-lg-3">
-										<button type="submit" class="btn btn-success">查询</button>
-										<button type="submit" class="btn btn-success">导出报表</button>
+										<button id='query' type="button" class="btn btn-success">查询</button>
+										<button id='clear' type="reset" class="btn btn-success">清空</button
 									</div>
 								</form>
 							</div>
@@ -271,6 +244,15 @@
     <script src="moudle/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script><!-- BOOTSTRAP DATETIMEPICKER JS  -->
     <script src="js/advanced_form_components.js" ></script><!-- ADVANCE FORM COMPONENTS PAGE JS  -->
 	<!-- END JS -->
+	<!-- BEGIN PRIONT EXECL JS -->
+		<script src="moudle/buttons/js/buttons.html5.min.js"></script>
+		<script src="moudle/buttons/js/vfs_fonts.js"></script>
+		<script src="moudle/buttons/js/pdfmake.min.js"></script>
+		<script src="moudle/buttons/js/dataTables.buttons.min.js"></script>
+		<script src="moudle/buttons/js/buttons.flash.min.js"></script>
+		<script src="moudle/buttons/js/jszip.min.js"></script>
+		<script src="moudle/buttons/js/buttons.print.min.js"></script>
+	<!-- END JS-->
 </body>
 
 </html>

@@ -23,13 +23,14 @@ class AjaxSourceTable(Table):
 
     id = Column(field = 'id')
     title = Column(field = 'title')
+    reseller = Column(field = 'reseller')
     reseller_mob = Column(field = 'reseller_mob')
     receive_mode = Column(field = 'receive_mode')
     start_time = Column(field = 'start_time',searchable= False)
     dead_time = Column(field = 'dead_time',searchable = False)
     status = Column(field = 'status')
     volume = Column(field = 'volume')
-    details = Column(field = 'details')
+    details = Column(field = 'id')
     class Meta:
         model = Bulk
         ajax = True

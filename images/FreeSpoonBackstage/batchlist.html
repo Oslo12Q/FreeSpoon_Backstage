@@ -108,7 +108,7 @@
                            <a href="javascript:;" class="fa fa-chevron-down"></a>
                            </span>
 							</header>
-							<div class="panel-body">
+					 		<div class="panel-body">
 								<form id='form_table' class="form-inline" role="form">
 									<div class="form-group">
 										<input type="text" class="form-control" id="name" placeholder="团购名称">
@@ -119,11 +119,11 @@
 									<span class="label label-warning">团购状态</span>
 										<select id='status' class="input-small inline form-control" style="width:100px">
 											<option value="">未选择</option>
-											<option value="1">未开始</option>
+											<option value="-2">未开始</option>
 											<option value="2">已开始</option>
 											<option value="0">已截团</option>
 											<option value="3">已发货</option>
-											<option value="4">已结束</option>
+											<option value="-1">已结束</option>
 										</select>
 									<button id='query' type="button" class="btn btn-success">查询</button>
 									<button id='clear' type="reset" class="btn btn-success">清空</button>
@@ -141,13 +141,14 @@
 									<table class="display table table-bordered table-striped" id="example">
 										<thead>
 											<tr>
-												<th>团购编号</th>
+												<th class="hidden-phone">团购编号</th>
 												<th class="hidden-phone">团购名称</th>
-												<th>团主手机号</th>
+												<th>团主名称</th>
+												<th class="hidden-phone">团主手机号</th>
 												<th class="hidden-phone">团购类型</th>
 												<th class="hidden-phone">开始时间</th>
 												<th class="hidden-phone">结束时间</th>
-												<th class="hidden-phone">团购状态</th>
+												<th>团购状态</th>
 												<th class="hidden-phone">销售量</th>
 												<th class="hidden-phone">操作</th>
 											</tr>
