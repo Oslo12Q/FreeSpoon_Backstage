@@ -49,7 +49,7 @@ $(document).ready(function () {
                 "ajaxSource":"http://192.168.102.167:8080/order/",
 				"fnServerParams":function(aoData){
 					aoData.push(
-						{'name':'batch_name','value':$('#name').val()},
+						{'name':'filter[batch_name]','value':$('#name').val()},
 						{'name':'batch_mob','value':$('#mob').val()},
 						{'name':'pay_status','value':$('#pay_status option:selected').val()},
 						{'name':'pay_method','value':$('#pay_method option:selected').val()},
@@ -100,13 +100,11 @@ $(document).ready(function () {
                     }}
 					/*{'targets':7,'mRender':function(data){
                         if(data==0){
-                            return '已开始';
+                            return '未付款';
                         }else if(data==-1){
-                            return '已结束';
+                            return '已付款';
                         }else if(data==-2){
-                            return '未开始';
-                        }else if(data==1){
-                            return '已截团';
+                            return '已退款';
                         }
                     }}*/
                 ],

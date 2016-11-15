@@ -48,9 +48,9 @@ $(document).ready(function () {
                 "ajaxSource":"http://192.168.102.167:8080/datasource/ajaxsource/api/",
 				"fnServerParams":function(aoData){
 					aoData.push(
-						{'name':'batch_name','value':$('#name').val()},
-						{'name':'batch_mob','value':$('#mob').val()},
-						{'name':'batch_status','value':$('#status option:selected').val()}
+						{'name':'filter[batch_name]','value':$('#name').val()},
+						{'name':'filter[batch_mob]','value':$('#mob').val()},
+						{'name':'fileter[batch_status]','value':$('#status option:selected').val()}
 					)
 				},
                "columns": [
