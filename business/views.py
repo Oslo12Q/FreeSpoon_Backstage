@@ -1,9 +1,17 @@
 from django.shortcuts import render
 
-from django.db.models import Q
-
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
+from rest_framework.permissions import(
+	AllowAny,
+	IsAuthenticated
+)
+from rest_framework.decorators import(
+	api_view,
+	permission_classes,
+	parser_classes,
+)
 
 from .models import *
 from table.views import FeedDataView
@@ -33,6 +41,7 @@ class MyDataView(FeedDataView):
 	    queryset = queryset.filter(reseller_mob__contains = mob)
 	if status:
 	    queryset = queryset.filter(status = status)
+
 	return queryset
 
 
@@ -50,8 +59,6 @@ class OrderView(FeedDataView):
 	start_time = self.request.GET['filter[start_day]']
 	end_time = self.request.GET['filter[end_day]']
 
-	print start_time
-	print end_time
 	queryset = super(OrderView,self).get_queryset()
 
 	if bulk_id:
@@ -66,4 +73,12 @@ class OrderView(FeedDataView):
 	    queryset = queryset.filter(payment_method = method)
 	if start_time and end_time:
 	    queryset = queryset.filter(create_time__range = (start_time,end_time))	
+
 	return queryset
+
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+@csrf_exempt
+def login(request):
+	pass

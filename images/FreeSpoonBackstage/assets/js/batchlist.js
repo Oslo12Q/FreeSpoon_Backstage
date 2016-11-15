@@ -69,7 +69,7 @@ $(document).ready(function () {
                     {"targets":-1,"mRender":function(data){
                         return "<a href='batchdetails.html?id="+data+"'>详情</a>"
                     }},
-                    {'targets':3,'mRender':function(data){
+                    {'targets':4,'mRender':function(data){
                         if(data==1){
                             return '自提';
                         }else if(data==2){

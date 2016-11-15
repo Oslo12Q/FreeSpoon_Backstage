@@ -26,8 +26,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^datasource/ajaxsource/api/$', business.views.MyDataView.as_view(), name='ajax_source_api'),
-    url(r'^order/$',business.views.OrderView.as_view(),name='ajax_order_api')
-#    url(r'^edit/(\d+)/$', 'business.views.edit', name='edit'), 
+    url(r'^order/$',business.views.OrderView.as_view(),name='ajax_order_api'),
+    url(r'^login/$',business.views.login,name = 'login'), 
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

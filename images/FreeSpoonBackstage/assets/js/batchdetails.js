@@ -53,6 +53,7 @@ $(document).ready(function () {
 				],
                 "processing": true,
                 "serverSide": true,
+				"bAutoWidth":false,
                 "paging":true,
                 "iDisplayLength": 25,
 				"sLoadingRecords": "加载中...",
@@ -84,39 +85,43 @@ $(document).ready(function () {
 							{ "mData ": "col11"},
 							{ "mData ": "col12"},
 							{ "mData ": "col13"},
-							{ "mData ": "col14"}
+							{ "mData ": "col14"},
+							{ "mData ": "col15"}
                         ],
-                /*"columnDefs": [ 
-					{"targets": -1,"orderable": false},
-					{"targets": [0,1,2,3],"orderable": false},
-					{'targets':4,'mRender':function(data){
-						if(data==1){
-							return '自提';
-						}else if(data==2){
-							return '送货上门';
-						}
-					}},
-					{'targets':6,'mRender':function(data){
-						if(data==-2){
-							return '已取消';
-						}else if(data==-1){
-							return '未付款';
-						}else if(data==0){
-							return '已付款';
-						}else if(data==1){
-							return '已退款';
-						}
-					}},
-					{'targets':7,'mRender':function(data){
-						if(data==1){
-							return '微信';
-						}else if(data==2){
-							return '余额';
-						}else if(data==3){
-							return '微信+余额';
-						}
-					}}
-				],*/
+                "columnDefs": [ 
+                    {"targets": -1,"orderable": false},
+                    {"targets": [0,1,2],"orderable": false},
+					{"targets": [4,5],"searchable": false},
+                    {'targets':4,'mRender':function(data){
+                        if(data==1){
+                            return '自提';
+                        }else if(data==2){
+                            return '送货上门';
+                        }else{
+                            return '自提/送货上门';
+                        }
+                    }},
+                    {'targets':6,'mRender':function(data){
+                        if(data==0){
+                            return '已开始';
+                        }else if(data==-1){
+                            return '已结束';
+                        }else if(data==-2){
+                            return '未开始';
+                        }else if(data==1){
+                            return '已截团';
+                        }
+                    }}
+					/*{'targets':7,'mRender':function(data){
+                        if(data==0){
+                            return '未付款';
+                        }else if(data==-1){
+                            return '已付款';
+                        }else if(data==-2){
+                            return '已退款';
+                        }
+                    }}*/
+                ],
                 "oLanguage": {
                     "sLengthMenu": "每页显示 _MENU_ 条记录",
                     "sZeroRecords": "对不起，查询不到任何相关数据",
@@ -143,6 +148,7 @@ $(document).ready(function () {
 				"bLengthChange":false,
 				"bFilter":false,
 				"bPaginate":false,
+				"bAutoWidth":false,
 				"bInfo":false,
                 "ajaxSource":"http://192.168.102.167:8080/datasource/ajaxsource/api/",
 				"columns": [

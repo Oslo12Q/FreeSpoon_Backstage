@@ -39,6 +39,7 @@ $(document).ready(function () {
                 "processing": true,
                 "serverSide": true,
                 "paging":true,
+				"bAutoWidth":false,
                 "iDisplayLength": 25,
 				"sLoadingRecords": "加载中...",
                 "order":[],
@@ -69,7 +70,8 @@ $(document).ready(function () {
 							{ "mData ": "col11"},
 							{ "mData ": "col12"},
 							{ "mData ": "col13"},
-							{ "mData ": "col14"}
+							{ "mData ": "col14"},
+							{ "mData ": "col15"}
                         ],
                 "columnDefs": [ 
                     {"targets": -1,"orderable": false},

@@ -4,6 +4,12 @@ from django.db import models
 
 # Create your models here.
 
+class User(models.Model):
+        username = models.CharField(max_length=50)
+        password = models.CharField(max_length=50)
+        def __unicode__(self):
+		return self.username
+
 class Bulk(models.Model):
         title = models.CharField(max_length=200)
         category = models.CharField(max_length=11)
@@ -52,7 +58,7 @@ class Order(models.Model):
 	create_time = models.DateTimeField(auto_now=True)
 	obtain_name = models.CharField(max_length=100, null=True, blank=True)
 	obtain_mob = models.CharField(max_length=20, null=True, blank=True)
-	is_delete = models.BooleanField(default=False)
+	is_delete = models.IntegerField(max_length=11)
 	comments = models.TextField(null=True, blank=True)
 	def __unicode__(self):
 		return 	self.bulk.title
